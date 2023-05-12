@@ -269,12 +269,12 @@
         const earningsFUND = earningsFund.value;
         const salesMen = antalSalesmen.value;
 
-        const newNumberOfProducts = (earningsFUND/salesMen/90).toFixed(1);
+        const newNumberOfProducts = (earningsFUND/salesMen/90).toFixed(0);
         
         document.getElementById("redValue").innerText = earningsFUND;
         document.getElementById("greenValue").innerText = newNumberOfProducts;
         document.getElementById("greenSlider").value = newNumberOfProducts;
-        document.getElementById("blueValue").innerText = (newNumberOfProducts * salesMen * 47.17).toFixed(1);
+        document.getElementById("blueValue").innerText = (newNumberOfProducts * salesMen * 47.17).toFixed(0);
         document.getElementById("blueSlider").value = newNumberOfProducts * salesMen * 47.17;
       }
 
@@ -286,7 +286,7 @@
         document.getElementById("redSlider").value = productsPerPerson * salesMen * 90;
         document.getElementById("greenValue").innerText = productsPerPerson;
         document.getElementById("greenSlider").value = productsPerPerson;
-        document.getElementById("blueValue").innerText = (productsPerPerson * salesMen * 47.17).toFixed(1);
+        document.getElementById("blueValue").innerText = (productsPerPerson * salesMen * 47.17).toFixed(0);
         document.getElementById("blueSlider").value = productsPerPerson * salesMen * 47.17;
         document.getElementById("alphaSlider").value = salesMen;
         document.getElementById("opacityValue").innerText = salesMen;
