@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Fund</title>
+    <title>Snoddar & Co</title>
     <style>
       @font-face {
         font-family: "Dashiell";
@@ -13,288 +13,102 @@
         src: url("Graphie-Light.otf");
       }
 
-      body {
-        background-image: url("bakgrund.png");
-        background-size: cover;     
+      body, html {
+          height: 100%;
       }
 
-      h1 {
-        color: #e8e3d0;
-        font-family: "Dashiell", sans-serif;
-        align-self: center;
-        margin-top: 50px;
+      .parallax {
+          /* The image used */
+          background-image: url("bakgrund.png");
+
+          /* Set a specific height */
+          height: 100%;
+
+          /* Create the parallax scrolling effect */
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
       }
 
+      div.scroll-container {
+          overflow: auto;
+          white-space: nowrap;
+          padding: 10px;
+        }
 
-      h2, h3, h4 {
-        color: #e8e3d0;
-        font-family: "Graphie", sans-serif;
+        div.scroll-container img {
+            padding: 10px;
+            height: 500px;
+            width: 500px;
+        }
+
+      .grid-container {
+        display: grid;
+        column-gap: 300px;
+        width: 50%;
+        margin: auto;
       }
 
-      input[type=range] {
-        -webkit-appearance: none;
-        width: 100%;
-        margin: 16px 0;
-      }
-
-      input[type=range]:focus {
-        outline: none;
-      }
-
-      input[type=range]::-webkit-slider-runnable-track {
-        width: 100%;
-        height: 4px;
-        cursor: pointer;
-        background-color: #ccc;
-        border-radius: 2px;
-      }
-
-      input[type=range]::-webkit-slider-thumb {
-        height: 24px;
-        width: 24px;
-        background-color: white;
-        border-radius: 50%;
-        border: 1px solid #ccc;
-        cursor: pointer;
-        -webkit-appearance: none;
-        margin-top: -10px;
-      }
-
-      input[type=range]:focus::-webkit-slider-runnable-track {
-        background-color: #ddd;
-      }
-
-      input[type=range]::-moz-range-track {
-        width: 100%;
-        height: 4px;
-        cursor: pointer;
-        background-color: #ccc;
-        border-radius: 2px;
-      }
-
-      input[type=range]::-moz-range-thumb {
-        height: 24px;
-        width: 24px;
-        background-color: white;
-        border-radius: 50%;
-        border: 1px solid #ccc;
-        cursor: pointer;
-        margin-top: -10px;
-      }
-
-      input[type=range]::-ms-track {
-        width: 100%;
-        height: 4px;
-        cursor: pointer;
-        background-color: transparent;
-        border-color: transparent;
-        color: transparent;
-      }
-
-      input[type=range]::-ms-fill-lower {
-        background-color: #ccc;
-        border-radius: 2px;
-      }
-
-      input[type=range]::-ms-fill-upper {
-        background-color: #ccc;
-        border-radius: 2px;
-      }
-
-      input[type=range]::-ms-thumb {
-        height: 24px;
-        width: 24px;
-        background-color: white;
-        border-radius: 50%;
-        border: 1px solid #ccc;
-        cursor: pointer;
-        margin-top: -10px;
-      }
-
-      .row {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
-        margin-bottom: 20px;
-      }
-
-      .row div {
-        margin-right: 20px;
-      }
-
-      #redValue, #greenValue, #blueValue, #opacityValue {
-        font-family: 'Graphie', sans-serif;
-      }
-
-      .value-box {
-        display: inline-block;
-        width: 60%;
-        height: 40px;
-        font-size: 1.2rem;
-        border-radius: 10px;
-        background-color: #e8e3d0;
-        text-align: center;
-        line-height: 40px;
-        font-family: 'Graphie', sans-serif;
-      }
-
-      .yellowtext {
-        color: #F7A91E;
-        font-family: "Dashiell", sans-serif;
-      }
-
-      .fundvalue-box {
-        display: flex;
-        width: 60%;
-        height: 40px;
-        font-size: 1.2rem;
-        border-radius: 10px;
-        background-color: #F7A91E;
-        text-align: center;
-        align-items: center;
-        justify-content: center;
-        line-height: 40px;
-        font-family: 'Graphie', sans-serif;
+      .image {
+        height: 500px;
+        width: 500px;
+        padding-right: 50px;
+        padding-left: 50px;
       }
 
       .center {
-        display: flex;
-        flex-direction: column;
-        width: 40%;
-        align-items: center;
-        justify-content: center;
-      }
-      .centertext {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-      }
-
-      #avg {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-        color: #e8e3d0;
-        font-family: 'Graphie', sans-serif;
-      }
-
-      #highest {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-        color: #F7A91E;
-        margin-top: 15px;
-        font-family: 'Graphie', sans-serif;
-      }
-
-      #fund {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-        margin-top: 30px;
-        justify-content: center;
-        color: white;
-        font-size: 36px;
-        font-family: 'Dashiell', sans-serif;
-      }
-
-      .centertextfund {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-        justify-content: space-around;
-      }
-
-      .smalllogo {
-          margin-top: 30px;
-          width: 10%;
+        text-align: center
       }
 
     </style>
   </head>
-  <body>
-    <span class="centertext"><h1>Hur mycket vill ni <span class="yellowtext">tjäna?</span></h1></span>
-    <div class="row">
-        <div class="center">
-            <h2>Förtjänst med FUND</h2>
-            <div class="fundvalue-box">
-                <span id="redValue">9000</span>
+    <body class="parallax">
+        <H1 class="center">Snoddar & Co</H1>
+        <div>
+            <div>
+                Testar
             </div>
-            <input type="range" min="0" max="225000" value="9000" step="90" id="redSlider">
+            <div class="grid-container">
+                <div class="scroll-container">
+                    <img src="ocean.png"/>
+                    <img src="ocean2.png"/>
+                    <img src="ocean3.png"/>
+                    <img src="ocean3.png"/>
+                    <img src="ocean3.png"/>
+                    <img src="ocean3.png"/>
+                </div>
+            </div>
         </div>
-        <div class="center">
-            <h2>Produkter per person</h2>
-            <div class="value-box"><span id="greenValue">5</span></div>
-            <input type="range" min="0" max="50" value="5" id="greenSlider">
+        <div>
+            <div>
+                Testar
+            </div>
+            <div class="grid-container">
+                <div class="scroll-container">
+                    <img src="flames.png"/>
+                    <img src="flames2.png"/>
+                    <img src="flames3.png"/>
+                    <img src="flames3.png"/>
+                    <img src="flames3.png"/>
+                    <img src="flames3.png"/>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="center">
-            <h2>Förtjänst med anda aktörer</h2>
-            <div class="value-box"><span id="blueValue">4717</span></div>
-            <input type="range" min="0" max="225000" value="4717" id="blueSlider" disabled>
+        <div>
+            <div>
+                Testar
+            </div>
+            <div class="grid-container">
+                <div class="scroll-container">
+                    <img src="flames.png"/>
+                    <img src="flames2.png"/>
+                    <img src="flames3.png"/>
+                    <img src="flames3.png"/>
+                    <img src="flames3.png"/>
+                    <img src="flames3.png"/>
+                </div>
+            </div>
         </div>
-        <div class="center">
-            <h2>Antal säljare</h2>
-            <div class="value-box"><span id="opacityValue">20</span></div>
-            <input type="range" min="0" max="50" step="1" value="20" id="alphaSlider">
-        </div>
-    </div>  
-
-    <span id="avg">*GENOMSNITTET SÄLJER 5-6 PRODUKTER</span>
-    <span id="highest">Högst vinstmarginal i branschen</span>
-    <div class="centertextfund">
-        <img alt="logo" src="logo.png" class="smalllogo"/>
-    </div>
-
-    
-    <script>
-      const earningsFund = document.getElementById("redSlider");
-      const productsPerPersonSlider = document.getElementById("greenSlider");
-      const earningsOther = document.getElementById("blueSlider");
-      const antalSalesmen = document.getElementById("alphaSlider");
-      
-      
-      function recalculateFromEarningsFund() {
-        const earningsFUND = earningsFund.value;
-        const salesMen = antalSalesmen.value;
-
-        const newNumberOfProducts = (earningsFUND/salesMen/90).toFixed(0);
-        
-        document.getElementById("redValue").innerText = earningsFUND;
-        document.getElementById("greenValue").innerText = newNumberOfProducts;
-        document.getElementById("greenSlider").value = newNumberOfProducts;
-        document.getElementById("blueValue").innerText = (newNumberOfProducts * salesMen * 47.17).toFixed(0);
-        document.getElementById("blueSlider").value = newNumberOfProducts * salesMen * 47.17;
-      }
-
-      function recalculateFromEarningsFromInput() {
-        const productsPerPerson = productsPerPersonSlider.value;
-        const salesMen = antalSalesmen.value;
-        
-        document.getElementById("redValue").innerText = productsPerPerson * salesMen * 90;
-        document.getElementById("redSlider").value = productsPerPerson * salesMen * 90;
-        document.getElementById("greenValue").innerText = productsPerPerson;
-        document.getElementById("greenSlider").value = productsPerPerson;
-        document.getElementById("blueValue").innerText = (productsPerPerson * salesMen * 47.17).toFixed(0);
-        document.getElementById("blueSlider").value = productsPerPerson * salesMen * 47.17;
-        document.getElementById("alphaSlider").value = salesMen;
-        document.getElementById("opacityValue").innerText = salesMen;
-
-      }
-      
-      earningsFund.addEventListener("input", recalculateFromEarningsFund);
-      productsPerPersonSlider.addEventListener("input", recalculateFromEarningsFromInput);
-      antalSalesmen.addEventListener("input", recalculateFromEarningsFromInput);
-    </script>
-  </body>
+    </body>
+</html>
