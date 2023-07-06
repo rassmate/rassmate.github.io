@@ -3,6 +3,111 @@
   <head>
     <title>Snoddar & Co</title>
     <style>
+
+    * {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 500px;
+  position: relative;
+  margin: auto;
+  font-family: 'Graphie'
+}
+.slideshowimage {
+    width: 500px;
+    height: auto;
+}
+
+/* Hide the images by default */
+.ocean {
+  display: none;
+}
+
+.flames {
+    display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: black;
+  font-size: 32px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+  font-family: Graphie;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+
+
+
+
+
+
       @font-face {
         font-family: "Dashiell";
         src: url("Fontspring-DEMO-dashiellfine-black-2.otf");
@@ -58,57 +163,101 @@
       }
 
       .center {
-        text-align: center
+        text-align: center;
+        font-family: Graphie;
+      }
+
+      .description {
+
       }
 
     </style>
+      <script>
+          let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n, className) {
+  showSlides(slideIndex += n, className);
+}
+
+// Thumbnail image controls
+function currentSlide(n, className) {
+  showSlides(slideIndex = n, className);
+}
+
+function showSlides(n, className) {
+  let i;
+  let slides = document.getElementsByClassName(className);
+  let dots = document.getElementsByClassName("dot" + className);
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+      </script>
   </head>
-    <body class="parallax">
+    <body onload="showSlides(1, 'ocean');showSlides(1, 'flames')" class="parallax">
         <H1 class="center">Snoddar & Co</H1>
-        <div>
-            <div>
-                Testar
-            </div>
-            <div class="grid-container">
-                <div class="scroll-container">
-                    <img src="ocean.png"/>
-                    <img src="ocean2.png"/>
-                    <img src="ocean3.png"/>
-                    <img src="ocean3.png"/>
-                    <img src="ocean3.png"/>
-                    <img src="ocean3.png"/>
-                </div>
-            </div>
+        <H2 class="center">Ocean</H2>
+        <div class="slideshow-container">
+            Havet är en förtrollande utsträckning av azurblå vågor som sträcker sig så långt ögat kan nå och inbjuder oss att utforska dess vidsträckta skönhet. Dess majestätiska kraft frigörs genom kraschande vågor som ekar med naturens brusande styrka och påminner oss om dess vilda kraft. Under den skimrande ytan döljer sig en andlöst vacker värld, fylld med levande korallrev, gracila marina varelser och gömda skatter, som fångar våra sinnen och påminner oss om havets förtrollande skönhet.
         </div>
-        <div>
-            <div>
-                Testar
+        <br/>
+        <div class="slideshow-container">
+            <div class="ocean fade">
+                <img src="ocean.jpg" class="slideshowimage"/>
             </div>
-            <div class="grid-container">
-                <div class="scroll-container">
-                    <img src="flames.png"/>
-                    <img src="flames2.png"/>
-                    <img src="flames3.png"/>
-                    <img src="flames3.png"/>
-                    <img src="flames3.png"/>
-                    <img src="flames3.png"/>
-                </div>
+            <div class="ocean fade">
+                <img src="ocean2.jpg" class="slideshowimage"/>
             </div>
+            <div class="ocean fade">
+                <img class="slideshowimage" src="ocean3.jpg"/>
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1, 'ocean')">&#10094;</a>
+            <a class="next" onclick="plusSlides(1, 'ocean')">&#10095;</a>
         </div>
-        <div>
-            <div>
-                Testar
+
+        <div style="text-align:center">
+            <span class="dotocean" onclick="currentSlide(1, 'ocean')"></span>
+            <span class="dotocean" onclick="currentSlide(2, 'ocean')"></span>
+            <span class="dotocean" onclick="currentSlide(3, 'ocean')"></span>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <H2 class="center">Flames</H2>
+        <div class="slideshow-container">
+            Elden är en hypnotisk dans av flammande intensitet, som sprider sitt varma sken och fängslar vårt sinne med sin förtrollande skönhet. Dess kraft kan förgöra allt i sin väg med hänsynslös energi, och dess lågor förkroppsligar den ofattbara styrkan i naturens element. Men i eldens värme och glöd finns även en ständig kraft att ge värme, ljus och en känsla av gemenskap, vilket påminner oss om dess dubbla natur av skönhet och kraft.
+        </div>
+        <br/>
+        <div class="slideshow-container">
+            <div class="flames fade">
+                <img src="flames.jpg" class="slideshowimage"/>
             </div>
-            <div class="grid-container">
-                <div class="scroll-container">
-                    <img src="flames.png"/>
-                    <img src="flames2.png"/>
-                    <img src="flames3.png"/>
-                    <img src="flames3.png"/>
-                    <img src="flames3.png"/>
-                    <img src="flames3.png"/>
-                </div>
+            <div class="flames fade">
+                <img src="flames2.jpg" class="slideshowimage"/>
             </div>
+            <div class="flames fade">
+                <img class="slideshowimage" src="flames3.jpg    "/>
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1, 'flames')">&#10094;</a>
+            <a class="next" onclick="plusSlides(1, 'flames')">&#10095;</a>
+        </div>
+
+        <div style="text-align:center">
+            <span class="dotflames" onclick="currentSlide(1, 'flames')"></span>
+            <span class="dotflames" onclick="currentSlide(2, 'flames')"></span>
+            <span class="dotflames" onclick="currentSlide(3, 'flames')"></span>
         </div>
     </body>
 </html>
